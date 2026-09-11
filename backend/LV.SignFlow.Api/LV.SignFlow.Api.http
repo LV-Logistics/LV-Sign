@@ -1,0 +1,6 @@
+@LV.SignFlow.Api_HostAddress = http://localhost:5270
+
+GET {{LV.SignFlow.Api_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
