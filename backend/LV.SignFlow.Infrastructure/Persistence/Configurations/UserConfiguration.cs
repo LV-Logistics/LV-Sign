@@ -29,7 +29,7 @@ namespace LV.SignFlow.Infrastructure.Persistence.Configurations
 
             builder.HasIndex(x => x.ExternalIdentityId)
                .IsUnique()
-               .HasFilter("[ExtenalIdentityId] is not null");
+               .HasFilter("[ExternalIdentityId] is not null");
 
             builder.HasOne(x=>x.Department)
                 .WithMany(x=>x.Users)

@@ -29,9 +29,11 @@ namespace LV.SignFlow.Infrastructure.Persistence.Configurations
    .IsUnique();
 
             builder.HasOne(x => x.Organization)
-                .WithMany(x => x.Departments)
-                .HasForeignKey(x => x.OrganizationId)
-                .OnDelete(DeleteBehavior.SetNull);
+    .WithMany(x => x.Departments)
+    .HasForeignKey(x => x.OrganizationId)
+    .OnDelete(DeleteBehavior.Restrict);
+
+       
 
         }
     }

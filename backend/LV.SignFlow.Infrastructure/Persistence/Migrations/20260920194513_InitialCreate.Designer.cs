@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LV.SignFlow.Infrastructure.Persistence.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20260920190637_InitialCreate")]
+    [Migration("20260920194513_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -1158,7 +1158,7 @@ namespace LV.SignFlow.Infrastructure.Persistence.Migrations
 
                     b.HasIndex("ExternalIdentityId")
                         .IsUnique()
-                        .HasFilter("[ExtenalIdentityId] is not null");
+                        .HasFilter("[ExternalIdentityId] is not null");
 
                     b.HasIndex("OrganizationId");
 
@@ -1392,7 +1392,7 @@ namespace LV.SignFlow.Infrastructure.Persistence.Migrations
                     b.HasOne("LV.SignFlow.Domain.Entities.Organizations.Organization", "Organization")
                         .WithMany("Departments")
                         .HasForeignKey("OrganizationId")
-                        .OnDelete(DeleteBehavior.SetNull)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("Organization");

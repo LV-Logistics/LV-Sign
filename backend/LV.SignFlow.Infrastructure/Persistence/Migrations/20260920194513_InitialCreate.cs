@@ -96,7 +96,7 @@ namespace LV.SignFlow.Infrastructure.Persistence.Migrations
                         column: x => x.OrganizationId,
                         principalTable: "Organizations",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.SetNull);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -1178,7 +1178,7 @@ namespace LV.SignFlow.Infrastructure.Persistence.Migrations
                 table: "Users",
                 column: "ExternalIdentityId",
                 unique: true,
-                filter: "[ExtenalIdentityId] is not null");
+                filter: "[ExternalIdentityId] is not null");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Users_Email",

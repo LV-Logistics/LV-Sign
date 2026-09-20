@@ -1155,7 +1155,7 @@ namespace LV.SignFlow.Infrastructure.Persistence.Migrations
 
                     b.HasIndex("ExternalIdentityId")
                         .IsUnique()
-                        .HasFilter("[ExtenalIdentityId] is not null");
+                        .HasFilter("[ExternalIdentityId] is not null");
 
                     b.HasIndex("OrganizationId");
 
@@ -1389,7 +1389,7 @@ namespace LV.SignFlow.Infrastructure.Persistence.Migrations
                     b.HasOne("LV.SignFlow.Domain.Entities.Organizations.Organization", "Organization")
                         .WithMany("Departments")
                         .HasForeignKey("OrganizationId")
-                        .OnDelete(DeleteBehavior.SetNull)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("Organization");
