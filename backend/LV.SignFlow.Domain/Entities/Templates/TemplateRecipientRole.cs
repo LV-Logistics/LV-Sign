@@ -27,7 +27,6 @@ namespace LV.SignFlow.Domain.Entities.Templates
 
         public bool AllowSenderChangeRoutingOrder { get; set; } = true;
 
-
         public TemplateVersion TemplateVersion { get; set; } = null!;
         public ICollection<TemplateField> TemplateFields { get; set; } = new List<TemplateField>();
         public ICollection<TemplateRoutingRule> Rules { get; set; }

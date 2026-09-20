@@ -23,7 +23,7 @@ namespace LV.SignFlow.Domain.Entities.Templates
         public bool IsActive { get; set; } = true;
 
 
-        public TemplateRoutingRuleSet RuleSet { get; set; } = null!;
+        public TemplateRoutingRuleSet TemplateRoutingRuleSet { get; set; } = null!;
 
         public TemplateRecipientRole TargetRecipientRole { get; set; } = null!;
 

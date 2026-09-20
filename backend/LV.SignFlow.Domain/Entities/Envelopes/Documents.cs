@@ -30,7 +30,8 @@ namespace LV.SignFlow.Domain.Entities.Envelopes
 
         public DateTimeOffset CreatedAt { get; set; }
 
-
+        public ICollection<Fields> EnvelopeFields { get; set; }
+ = new List<Fields>();
         public Envelope Envelope { get; set; } = null!;
     }
 }

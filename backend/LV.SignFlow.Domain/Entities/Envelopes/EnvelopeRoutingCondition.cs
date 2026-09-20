@@ -18,8 +18,8 @@ namespace LV.SignFlow.Domain.Entities.Envelopes
         public string? ComparisonValue { get; set; }
 
 
-        public EnvelopeRoutingRule Rule { get; set; } = null!;
+        public EnvelopeRoutingRule EnvelopeRoutingRule { get; set; } = null!;
 
-        public Fields SourceField { get; set; } = null!;
+        public Fields SourceEnvelopeField { get; set; } = null!;
     }
 }

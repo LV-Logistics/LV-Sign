@@ -32,7 +32,7 @@ namespace LV.SignFlow.Domain.Entities.Envelopes
 
         public User CreatedByUser { get; set; } = null!;
         public Organization Organization { get; set; } = null!;
-        public TemplateVersion? SourceTemplationVersion { get; set; }
+        public TemplateVersion? SourceTemplateVersion { get; set; }
         public ICollection<Documents> Documents { get; set; }= new List<Documents>();
         public ICollection<Events> Events { get; set; }= new List<Events>();
         public ICollection<StatusHistory> StatusHistory { get; set; }= new List<StatusHistory>();

@@ -18,8 +18,8 @@ namespace LV.SignFlow.Domain.Entities.Templates
         public string? ComparisonValue { get; set; }
 
 
-        public TemplateRoutingRule RoutingRule { get; set; } = null!;
+        public TemplateRoutingRule TemplateRoutingRule{ get; set; } = null!;
 
-        public TemplateField SourceField { get; set; } = null!;
+        public TemplateField SourceTemplateField{ get; set; } = null!;
     }
 }

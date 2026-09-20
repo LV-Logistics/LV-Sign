@@ -11,7 +11,6 @@ namespace LV.SignFlow.Domain.Entities.Users
 {
     public class User
     {
-
         public Guid Id { get; set; }
 
         public string Email { get; set; } = string.Empty;
@@ -46,7 +45,7 @@ namespace LV.SignFlow.Domain.Entities.Users
            = new List<Stamps>();
         public ICollection<Template> Templates { get; set; }
             = new List<Template>();
-        public ICollection<Envelope> Envelopes { get; set; }
+        public ICollection<Envelope> CreatedEnvelopes { get; set; }
            = new List<Envelope>();
         public ICollection<AuditLog> AuditLogs { get; set; }
             = new List<AuditLog>();

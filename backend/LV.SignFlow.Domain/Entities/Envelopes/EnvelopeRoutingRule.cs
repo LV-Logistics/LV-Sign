@@ -23,7 +23,7 @@ namespace LV.SignFlow.Domain.Entities.Envelopes
         public bool IsActive { get; set; } = true;
 
 
-        public EnvelopeRoutingRuleSet RuleSet { get; set; } = null!;
+        public EnvelopeRoutingRuleSet EnvelopeRoutingRuleSet{ get; set; } = null!;
 
         public Recipients TargetRecipient { get; set; } = null!;
 
