@@ -1,13 +1,30 @@
 
+using LV.SignFlow.Api.Authentification;
+using LV.SignFlow.Application.Common.Interfaces;
+using LV.SignFlow.Application.Templates;
 using LV.SignFlow.Infrastructure;
+using LV.SignFlow.Infrastructure.Persistence;
+using LV.SignFlow.Infrastructure.Persistence.Seed;
+using LV.SignFlow.Infrastructure.Storage;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddInfrastructure(builder.Configuration);
+builder.Services.AddControllers();
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
 
+builder.Services.AddInfrastructure(builder.Configuration);
+builder.Services.AddScoped<ITemplateService, TemplateService>();
+builder.Services.AddScoped<IFileStorage,LocalFileStorage>();
+
+if (builder.Environment.IsDevelopment())
+{
+    builder.Services.AddScoped<ICurrentUser, DevelopmentCurrentUser>();
+}
 // Add services to the container.
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
+
 
 var app = builder.Build();
 
@@ -15,32 +32,21 @@ var app = builder.Build();
 if (app.Environment.IsDevelopment())
 {
     app.MapOpenApi();
+    app.UseSwagger();
+    app.UseSwaggerUI();
+
+    using var scope = app.Services.CreateScope();
+
+    var dbContext =
+        scope.ServiceProvider.GetRequiredService<AppDbContext>();
+
+   
+    await DevelopmentDataSeeder.SeedAsync(dbContext);
 }
 
 app.UseHttpsRedirection();
-
-var summaries = new[]
-{
-    "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-};
-
-app.MapGet("/weatherforecast", () =>
-{
-    var forecast =  Enumerable.Range(1, 5).Select(index =>
-        new WeatherForecast
-        (
-            DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
-            Random.Shared.Next(-20, 55),
-            summaries[Random.Shared.Next(summaries.Length)]
-        ))
-        .ToArray();
-    return forecast;
-})
-.WithName("GetWeatherForecast");
+app.MapControllers();
 
 app.Run();
 
-record WeatherForecast(DateOnly Date, int TemperatureC, string? Summary)
-{
-    public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
-}
+

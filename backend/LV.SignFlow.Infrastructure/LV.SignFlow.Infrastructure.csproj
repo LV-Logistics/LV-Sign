@@ -19,7 +19,6 @@
     <Folder Include="Integrations\Microsoft\" />
     <Folder Include="Pdf\" />
     <Folder Include="Notifications\" />
-    <Folder Include="Storage\" />
   </ItemGroup>
 
   <PropertyGroup>

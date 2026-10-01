@@ -1,4 +1,5 @@
 ﻿using LV.SignFlow.Domain.Entities.Users;
+using LV.SignFlow.Infrastructure.Persistence.Seed;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using System;
@@ -28,6 +29,9 @@ namespace LV.SignFlow.Infrastructure.Persistence.Configurations
                 .WithMany(x => x.PermissionProfilePermissions)
                 .HasForeignKey(x => x.PermissionId)
                 .OnDelete(DeleteBehavior.Restrict);
+
+            builder.HasData(
+    SystemPermissionProfileSeedData.ProfilePermissions);
         }
     }
 }

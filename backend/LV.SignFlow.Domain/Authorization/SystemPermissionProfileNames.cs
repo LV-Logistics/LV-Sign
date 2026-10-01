@@ -4,7 +4,9 @@ using System.Text;
 
 namespace LV.SignFlow.Domain.Authorization
 {
-    internal class SystemPermissionProfileNames
+    public static class SystemPermissionProfileNames
     {
+        public const string StandardSender = "Standard Sender";
+        public const string TemplateManager = "Template Manager";
     }
 }

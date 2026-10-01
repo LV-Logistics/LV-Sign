@@ -1,4 +1,8 @@
-﻿using LV.SignFlow.Infrastructure.Persistence;
+﻿using LV.SignFlow.Application.Common.Interfaces;
+using LV.SignFlow.Application.Templates;
+using LV.SignFlow.Infrastructure.Persistence;
+using LV.SignFlow.Infrastructure.Persistence.Repositories;
+using LV.SignFlow.Infrastructure.Storage;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -21,6 +25,12 @@ namespace LV.SignFlow.Infrastructure
 
             services.AddDbContext<AppDbContext>(options =>
                 options.UseSqlServer(connectionString));
+
+            services.AddScoped(typeof(IRepository<>),typeof(Repository<>));
+            services.AddScoped<IUnitOfWork,UnitOfWork>();
+            services.AddScoped<ITemplateRepository, TemplateRepository>();
+            services.AddScoped<IFileStorage, LocalFileStorage>();
+            
 
             return services;
         }
